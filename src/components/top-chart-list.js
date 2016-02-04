@@ -2,27 +2,36 @@
  * Created by devin on 2/4/16.
  */
 import React from 'react';
-import {Card, List} from 'material-ui';
+import {Card, List, ListItem} from 'material-ui';
 import _ from 'lodash';
 let TopChartList = (props) => {
-  let list = _.map(props.data, (d, i) => <div> {i + 1}. {d.name} - Language: {d.lang} </div>);
+  let list = _.map(props.data, (d, i) => (
+    <ListItem
+      primaryText={d.name}
+      secondaryText={"Language: " + d.lang }
+    />
+    )
+  );
   return (
-    <Card style={{
+    <div style={{
                 flexGrow: 1,
-                overflowY: 'auto',
                 margin: '1vw'
             }}>
-      <List>
-        <div style={{
+      <div style={{
                     color: 'black',
                     fontSize: 20,
                     textAlign: 'center'
                        }}>
-          {props.timeframe}
-          </div>
-        {list}
+        {props.timeframe}
+      </div>
+      <Card style={{
+      overflowY: 'auto'
+      }} >
+        <List>
+          {list}
         </List>
-    </Card>
+      </Card>
+    </div>
   )
 };
 

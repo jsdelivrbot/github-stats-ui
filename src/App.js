@@ -9,6 +9,7 @@ import MyRawTheme from './css/materialThemeCustomizations';
 import axios from 'axios';
 import _ from 'lodash';
 import TopChartList from './components/top-chart-list';
+import Select from 'react-select';
 let paperStyles = {
   margin: 10,
   marginBottom: 0, // as already margin top on plots below
@@ -24,9 +25,16 @@ export default class App extends React.Component {
     this.state = {
      leaderboard:  [
      {name: "repo1", lang: "JavaScript"}, {name: "repo2", lang: "JavaScript"}, {name: "repo3", lang: "JavaScript"},
-     {name: "repo1", lang: "Python"}, {name: "repo2", lang: "Python"}, {name: "repo3", lang: "Python"},
-     {name: "repo1", lang: "R"}, {name: "repo2", lang: "R"}, {name: "repo3", lang: "R"}
-     ]
+     {name: "repo4", lang: "Python"}, {name: "repo5", lang: "Python"}, {name: "repo6", lang: "Python"},
+     {name: "repo7", lang: "R"}, {name: "repo8", lang: "R"}, {name: "repo9", lang: "R"}
+     ],
+      languages: [
+        {value: "All", label: "All Languages"},
+        {value: "JavaScript", label: "JavaScript"},
+        {value: "Python", label: "Python"},
+        {value: "R", label: "R"}
+      ],
+      selectedLanguage: ""
     }
   }
 
@@ -42,8 +50,21 @@ export default class App extends React.Component {
     };
   }
 
+  filterLanguage(selectedLanguage) {
+    console.log("selected language");
+    console.log(selectedLanguage);
+   this.setState({
+     selectedLanguage
+   })
+  }
+
 
   render() {
+    let {leaderboard, selectedLanguage} = this.state;
+    console.log('selected language value:')
+    console.log(typeof selectedLanguage);
+    console.log(JSON.stringify(selectedLanguage));
+    leaderboard = (selectedLanguage !== "All" && selectedLanguage !== "") ? _.filter(leaderboard, (l) => l.lang === selectedLanguage ) : leaderboard;
     return (
       <div>
         <AppBar
@@ -52,17 +73,28 @@ export default class App extends React.Component {
           maxHeight: '3vw'
           }}
         />
+        <div
+        style={{
+          margin: 10
+        }}>
+          <Select
+            name="form-field-name"
+            value="All"
+            options={this.state.languages}
+            onChange={this.filterLanguage.bind(this)}
+          />
+        </div>
         <div style={{
                 display: 'flex',
                 flexFlow: 'row wrap',
                 maxWidth: 1200,
-                maxHeight: '500',
+                maxHeight: '80vh',
                 width: '100%',
-                margin: '30px auto 30px'
+                margin: '10px auto 10px'
                 }}>
 
-            <TopChartList timeframe="Weekly" data={this.state.leaderboard} />
-            <TopChartList timeframe="Monthly" data={this.state.leaderboard} />
+            <TopChartList timeframe="Weekly" data={leaderboard} />
+            <TopChartList timeframe="Monthly" data={leaderboard} />
 
 
         </div>
