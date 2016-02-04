@@ -15,7 +15,8 @@ let TopChartList = (props) => {
   return (
     <div style={{
                 flexGrow: 1,
-                margin: '1vw'
+                margin: '1vw',
+                width: 475 // set so has very basic wrapping on mobile
             }}>
       <div style={{
                     color: 'black',
