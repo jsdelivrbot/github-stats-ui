@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {Card, List} from 'material-ui';
-export default (props) => {
+let TopChartList = (props) => {
   return (
     <Card style={{
                 flexGrow: 1,
@@ -22,4 +22,10 @@ export default (props) => {
       </List>
     </Card>
   )
+};
+
+TopChartList.propTypes = {
+  timeframe: React.PropTypes.string.isRequired
 }
+
+export default TopChartList
