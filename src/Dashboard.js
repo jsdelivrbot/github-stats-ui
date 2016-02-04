@@ -23,18 +23,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     leaderboard:  [
-     {name: "repo1", lang: "JavaScript"}, {name: "repo2", lang: "JavaScript"}, {name: "repo3", lang: "JavaScript"},
-     {name: "repo4", lang: "Python"}, {name: "repo5", lang: "Python"}, {name: "repo6", lang: "Python"},
-     {name: "repo7", lang: "R"}, {name: "repo8", lang: "R"}, {name: "repo9", lang: "R"}
-     ],
-      languages: [
-        {value: "All", label: "All Languages"},
-        {value: "JavaScript", label: "JavaScript"},
-        {value: "Python", label: "Python"},
-        {value: "R", label: "R"}
+      visualizations: [
+        {value: "stars", label: "stars over time"}
       ],
-      selectedLanguage: ""
+      selectedVis: ""
     }
   }
 
@@ -50,21 +42,16 @@ export default class App extends React.Component {
     };
   }
 
-  filterLanguage(selectedLanguage) {
+  filterViz(selectedVis) {
     console.log("selected language");
-    console.log(selectedLanguage);
+    console.log(selectedVis);
    this.setState({
-     selectedLanguage
+     selectedViz
    })
   }
 
 
   render() {
-    let {leaderboard, selectedLanguage} = this.state;
-    console.log('selected language value:')
-    console.log(typeof selectedLanguage);
-    console.log(JSON.stringify(selectedLanguage));
-    leaderboard = (selectedLanguage !== "All" && selectedLanguage !== "") ? _.filter(leaderboard, (l) => l.lang === selectedLanguage ) : leaderboard;
     return (
       <div>
         <AppBar
@@ -79,9 +66,9 @@ export default class App extends React.Component {
         }}>
           <Select
             name="form-field-name"
-            value="All"
-            options={this.state.languages}
-            onChange={this.filterLanguage.bind(this)}
+            value=""
+            options={this.state.visualizations}
+            onChange={this.filterViz.bind(this)}
           />
         </div>
         <div style={{
@@ -92,10 +79,7 @@ export default class App extends React.Component {
                 margin: '10px auto 10px'
                 }}>
 
-            <TopChartList timeframe="Weekly" data={leaderboard} />
-            <TopChartList timeframe="Monthly" data={leaderboard} />
-
-
+          Dashboard stuff
         </div>
 
 

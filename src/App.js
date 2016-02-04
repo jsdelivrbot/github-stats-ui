@@ -87,7 +87,6 @@ export default class App extends React.Component {
         <div style={{
                 display: 'flex',
                 flexFlow: 'row wrap',
-                maxWidth: 1200,
                 maxHeight: '80vh',
                 width: '100%',
                 margin: '10px auto 10px'
