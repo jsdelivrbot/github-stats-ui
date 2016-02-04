@@ -8,6 +8,7 @@ import ThemeManager from 'material-ui/lib/styles/theme-manager';
 import MyRawTheme from './css/materialThemeCustomizations';
 import axios from 'axios';
 import _ from 'lodash';
+import TopChartList from './components/top-chart-list';
 let paperStyles = {
   margin: 10,
   marginBottom: 0, // as already margin top on plots below
@@ -67,6 +68,7 @@ export default class App extends React.Component {
                     fontSize: 20,
                     textAlign: 'center'
                        }}>
+                <TopChartList message="hello" />
                 Top Monthly
               </div>
               Charts
