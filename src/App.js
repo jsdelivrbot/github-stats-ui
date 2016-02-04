@@ -57,39 +57,9 @@ export default class App extends React.Component {
                 margin: '30px auto 30px'
                 }}>
 
-          <Card style={{
-                flexGrow: 1,
-                overflowY: 'auto',
-                margin: '1vw'
-            }}>
-            <List>
-              <div style={{
-                    color: 'black',
-                    fontSize: 20,
-                    textAlign: 'center'
-                       }}>
-                <TopChartList message="hello" />
-                Top Monthly
-              </div>
-              Charts
-            </List>
-          </Card>
-            <Card style={{
-                flexGrow: 1,
-                overflowY: 'auto',
-                margin: '1vw'
-            }}>
-            <List>
-              <div style={{
-                    color: 'black',
-                    fontSize: 20,
-                    textAlign: 'center'
-                       }}>
-                Top Weekly
-              </div>
-              Charts
-            </List>
-          </Card>
+            <TopChartList timeframe="Weekly" />
+            <TopChartList timeframe="Monthly" />
+
 
         </div>
 
