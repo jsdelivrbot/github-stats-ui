@@ -63,6 +63,7 @@
     "moment": "^2.11.0",
     "moment-range": "^2.1.0",
     "phantomjs": "^1.9.19",
+    "plotly.js": "^1.5.1",
     "qs": "^6.0.1",
     "react": "^0.14.6",
     "react-addons-update": "^0.14.6",
