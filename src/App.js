@@ -22,7 +22,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     leaderboard:  ["repo1", "repo2", "repo3"]
+     leaderboard:  [
+     {name: "repo1", lang: "JavaScript"}, {name: "repo2", lang: "JavaScript"}, {name: "repo3", lang: "JavaScript"},
+     {name: "repo1", lang: "Python"}, {name: "repo2", lang: "Python"}, {name: "repo3", lang: "Python"},
+     {name: "repo1", lang: "R"}, {name: "repo2", lang: "R"}, {name: "repo3", lang: "R"}
+     ]
     }
   }
 
@@ -57,8 +61,8 @@ export default class App extends React.Component {
                 margin: '30px auto 30px'
                 }}>
 
-            <TopChartList timeframe="Weekly" />
-            <TopChartList timeframe="Monthly" />
+            <TopChartList timeframe="Weekly" data={this.state.leaderboard} />
+            <TopChartList timeframe="Monthly" data={this.state.leaderboard} />
 
 
         </div>
