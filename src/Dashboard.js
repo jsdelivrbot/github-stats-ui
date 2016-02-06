@@ -81,13 +81,15 @@ export default class App extends React.Component {
                 flexFlow: 'row wrap',
                 maxHeight: '80vh',
                 width: '100%',
-                margin: '10px auto 10px'
+                margin: '10px auto 10px',
+                alignItems: 'center',
+                justifyContent: 'center'
                 }}>
-        <div id="myDiv" style={{
-        height: 600,
-        width: 800
-        }}>
-        </div>
+          <div id="myDiv" style={{
+          flexGrow: 1,
+          minHeight: 600
+          }}>
+          </div>
 
         </div>
 
