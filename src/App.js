@@ -8,6 +8,8 @@ import axios from 'axios';
 import _ from 'lodash';
 import TopChartList from './components/top-chart-list';
 import Select from 'react-select';
+
+import LEADERBOARD from './fixtures/top_list';
 let paperStyles = {
   margin: 10,
   marginBottom: 0, // as already margin top on plots below
@@ -22,17 +24,17 @@ export default class App extends React.Component {
     super(props);
     this.state = {
      leaderboard:  [
-     {name: "repo1", lang: "JavaScript"}, {name: "repo2", lang: "JavaScript"}, {name: "repo3", lang: "JavaScript"},
-     {name: "repo4", lang: "Python"}, {name: "repo5", lang: "Python"}, {name: "repo6", lang: "Python"},
-     {name: "repo7", lang: "R"}, {name: "repo8", lang: "R"}, {name: "repo9", lang: "R"}
      ],
       languages: [
-        {value: "All", label: "All Languages"},
-        {value: "JavaScript", label: "JavaScript"},
-        {value: "Python", label: "Python"},
-        {value: "R", label: "R"}
+        {value: "All", label: "All Languages"}
       ],
-      selectedLanguage: ""
+      freshness: [
+        {value: "med", label: "Balanced"},
+        {value: "low", label: "More Established"},
+        {value: "high", label: "Newer"}
+      ],
+      selectedLanguage: "",
+      selectedFreshness: "med"
     }
   }
 
@@ -56,6 +58,23 @@ export default class App extends React.Component {
    })
   }
 
+  handleSelectFreshness(selectedFreshness) {
+    console.log("selected freshness");
+    console.log(selectedFreshness);
+    let leaderboard = LEADERBOARD["week_" + selectedFreshness];
+    this.setState({
+      selectedFreshness,
+      leaderboard
+    })
+  }
+  //fetching data after mounting as necessary for ssr
+  componentDidMount() {
+    let leaderboard = LEADERBOARD["week_" + this.state.selectedFreshness];
+    this.setState({
+      leaderboard
+    })
+
+  }
 
   render() {
     let {leaderboard, selectedLanguage} = this.state;
@@ -70,10 +89,14 @@ export default class App extends React.Component {
           margin: 5
         }}>
           <Select
-            name="form-field-name"
             value="All"
             options={this.state.languages}
             onChange={this.filterLanguage.bind(this)}
+          />
+          <Select
+            value="med"
+            options={this.state.freshness}
+            onChange={this.handleSelectFreshness.bind(this)}
           />
         </div>
         <div className="flex-container">
