@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Router, Route, Link } from 'react-router';
 import {AppBar, IconButton, FlatButton, RaisedButton, Paper, Card, List} from 'material-ui';
 require('./main.scss');
-import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
 import ThemeManager from 'material-ui/lib/styles/theme-manager';
 import MyRawTheme from './css/materialThemeCustomizations';
 import axios from 'axios';
@@ -67,12 +65,6 @@ export default class App extends React.Component {
     leaderboard = (selectedLanguage !== "All" && selectedLanguage !== "") ? _.filter(leaderboard, (l) => l.lang === selectedLanguage ) : leaderboard;
     return (
       <div>
-        <AppBar
-          title={<span> Github Dashboard </span>}
-          style={{
-          maxHeight: '3vw'
-          }}
-        />
         <div
         style={{
           margin: 10
@@ -89,11 +81,11 @@ export default class App extends React.Component {
                 flexFlow: 'row wrap',
                 maxHeight: '80vh',
                 width: '100%',
-                margin: '10px auto 10px'
+                margin: '10px auto 10px',
+                justifyContent: 'center'
                 }}>
 
             <TopChartList timeframe="Weekly" data={leaderboard} />
-            <TopChartList timeframe="Monthly" data={leaderboard} />
 
 
         </div>
