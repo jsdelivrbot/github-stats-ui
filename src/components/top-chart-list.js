@@ -4,7 +4,7 @@
 import React from 'react';
 import {Card, List, ListItem, Paper} from 'material-ui';
 import _ from 'lodash';
-
+import Separator from "./Separator";
 const languageIcons = {
   "C": "devicon-c-line-wordmark",
   "COFFEESCRIPT": "devicon-coffeescript-original",
@@ -61,13 +61,14 @@ let TopChartList = (props) => {
         style={{
           display: "inline-block",
           float: 'right',
-          margin: 10,
+          margin: "12px 10px 5px auto",
           fontSize: 18
         }}
       >
         {d.language+ "     "}
         <i className={languageIcons[d.language.toUpperCase()] || "devicon-github-plain"}></i>
       </div>
+      <Separator />
     </div>
     )
   );
