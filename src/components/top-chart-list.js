@@ -2,25 +2,27 @@
  * Created by devin on 2/4/16.
  */
 import React from 'react';
-import {Card, List, ListItem} from 'material-ui';
+import {Card, List, ListItem, Paper} from 'material-ui';
 import _ from 'lodash';
 let TopChartList = (props) => {
   let list = _.map(props.data, (d, i) => (
-    <ListItem
-      primaryText={d.name}
-      secondaryText={"Language: " + d.lang }
-    />
+      <ListItem
+        primaryText={d.name}
+        secondaryText={"Language: " + d.lang }
+      />
     )
   );
   return (
-    <div style={{
-                flexGrow: 1,
-                margin: '1vw',
-                width: 475 // set so has very basic wrapping on mobile
-            }}>
+    <Paper
+      zDepth={5}
+      style={{
+        flexGrow: 1,
+        margin: '1vw'
+      }}
+      className="top-list"
+    >
       <div style={{
                     color: 'black',
-                    fontSize: 20,
                     textAlign: 'center'
                        }}>
         {props.timeframe}
@@ -32,7 +34,7 @@ let TopChartList = (props) => {
           {list}
         </List>
       </Card>
-    </div>
+    </Paper>
   )
 };
 

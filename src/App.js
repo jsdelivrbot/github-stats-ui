@@ -67,7 +67,7 @@ export default class App extends React.Component {
       <div>
         <div
         style={{
-          margin: 10
+          margin: 5
         }}>
           <Select
             name="form-field-name"
@@ -76,18 +76,8 @@ export default class App extends React.Component {
             onChange={this.filterLanguage.bind(this)}
           />
         </div>
-        <div style={{
-                display: 'flex',
-                flexFlow: 'row wrap',
-                maxHeight: '80vh',
-                width: '100%',
-                margin: '10px auto 10px',
-                justifyContent: 'center'
-                }}>
-
-            <TopChartList timeframe="Weekly" data={leaderboard} />
-
-
+        <div className="flex-container">
+          <TopChartList timeframe="Weekly" data={leaderboard} />
         </div>
 
 
