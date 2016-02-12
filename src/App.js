@@ -114,11 +114,6 @@ export default class App extends React.Component {
         //   onChange={this.handleSelectFreshness.bind(this)}
         // /> */}
         <div className="search-user">
-          <div
-            style={{
-            fontSize: 18
-            }}
-          >
              <TextField
              floatingLabelText="Personalize:"
              onEnterKeyDown={(e) => {
@@ -126,7 +121,7 @@ export default class App extends React.Component {
              }
              }
              />
-          </div>
+          <Timeline handleChange={(value) => this.handleSelectFreshness(value)} show={this.state.selectedFreshness} />
         </div>
         <div className="flex-container">
           <TopChartList timeframe={this.state.selectedTimeframe} data={leaderboard} >

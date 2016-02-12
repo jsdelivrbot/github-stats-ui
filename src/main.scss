@@ -28,8 +28,8 @@ body {
 .search-user {
   width: 100%;
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 .banner {
   width: 100%;
@@ -37,6 +37,10 @@ body {
   flex-flow: row nowrap;
   justify-content: space-around;
   max-height: 200px;
+}
+#freshness {
+  padding-top: 24px;
+  padding-left: 15px;
 }
 #logo {
   height: 50%;
