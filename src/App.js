@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, Link } from 'react-router';
-import {TextField} from 'material-ui';
+import {TextField, Tab, Tabs} from 'material-ui';
 require('./main.scss');
 import ThemeManager from 'material-ui/lib/styles/theme-manager';
 import MyRawTheme from './css/materialThemeCustomizations';
@@ -8,7 +8,8 @@ import axios from 'axios';
 import _ from 'lodash';
 import TopChartList from './components/top-chart-list';
 import Select from 'react-select';
-
+import Timeframe from './components/time-frame';
+import Timeline from './components/timeline';
 import LEADERBOARD from './fixtures/top_list';
 let paperStyles = {
   margin: 10,
@@ -96,26 +97,25 @@ export default class App extends React.Component {
       <div>
         <div
         style={{
-          margin: 5
+          marginTop: 20
         }}>
           <div className="banner">
             <img id="logo" src="https://raw.githubusercontent.com/halcyon-vortex/master/master/assets/github-compass-banner.png" alt="" />
           </div>
-          <Select
-            value="month"
-            options={this.state.timeframe}
-            onChange={this.handleSelectTimeframe.bind(this)}
-          />
-          <Select
-            value="med"
-            options={this.state.freshness}
-            onChange={this.handleSelectFreshness.bind(this)}
-          />
         </div>
+        {/** // <Select
+        //   value="month"
+        //   options={this.state.timeframe}
+        //   onChange={this.handleSelectTimeframe.bind(this)}
+        // />
+        // <Select
+        //   value="med"
+        //   options={this.state.freshness}
+        //   onChange={this.handleSelectFreshness.bind(this)}
+        // /> */}
         <div className="search-user">
           <div
             style={{
-            margin: "10",
             fontSize: 18
             }}
           >
@@ -129,7 +129,14 @@ export default class App extends React.Component {
           </div>
         </div>
         <div className="flex-container">
-          <TopChartList timeframe={this.state.selectedTimeframe} data={leaderboard} />
+          <TopChartList timeframe={this.state.selectedTimeframe} data={leaderboard} >
+            <Tabs
+              onChange={(timeframe) => this.handleSelectTimeframe(timeframe)}
+            >
+              <Tab label="Weekly" value="week" />
+              <Tab label="Monthly" value="month" />
+            </Tabs>
+          </TopChartList>
         </div>
 
 

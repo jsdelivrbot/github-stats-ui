@@ -81,11 +81,11 @@ let TopChartList = (props) => {
       }}
       className="top-list"
     >
+      {props.children}
       <div style={{
                     color: 'black',
                     textAlign: 'center'
                        }}>
-        {props.timeframe}
       </div>
       <Card style={{
       overflowY: 'auto'
