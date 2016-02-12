@@ -98,6 +98,9 @@ export default class App extends React.Component {
         style={{
           margin: 5
         }}>
+          <div className="banner">
+            <img id="your-img" src="https://raw.githubusercontent.com/halcyon-vortex/master/master/assets/github-compass-banner.png" alt="" />
+          </div>
           <Select
             value="month"
             options={this.state.timeframe}
@@ -117,7 +120,12 @@ export default class App extends React.Component {
             }}
           >
              <TextField
-             floatingLabelText="Personalize:" />
+             floatingLabelText="Personalize:"
+             onEnterKeyDown={(e) => {
+             window.location.href = window.location.href + `recommendations/${e.target.value}`
+             }
+             }
+             />
           </div>
         </div>
         <div className="flex-container">

@@ -25,15 +25,26 @@ body {
   -webkit-flex-flow: row wrap;
   justify-content: center;
 }
+.search-user {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+.banner {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  max-height: 200px;
+}
+#your-img {
+  height: 50%;
+  width: 50%;
+}
 @media only screen and (min-width: 600px){
   .top-list {
     max-width: 500px
-  }
-  .search-user {
-    width: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
   }
   .top-recommendations {
     max-width: 300px
