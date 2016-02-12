@@ -54,7 +54,7 @@ let TopChartList = (props) => {
         fontSize: 14,
         fontWeight: 100
         }}>
-          { "Stars this week: " + d.stars_in_week }
+          { `Stars this ${props.timeframe}: ` + d[`stars_in_${props.timeframe}`] }
         </span>
       </div>
       <div
