@@ -4,6 +4,8 @@ import {Router, Route, Link, browserHistory} from 'react-router'
 import App from './App';
 import Recommendations from './Recommendations';
 import Dashboard from './Dashboard';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 render((
     <Router history={browserHistory}>
       <Route path={"/"} component={App} >
