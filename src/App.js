@@ -99,7 +99,7 @@ export default class App extends React.Component {
           margin: 5
         }}>
           <div className="banner">
-            <img id="your-img" src="https://raw.githubusercontent.com/halcyon-vortex/master/master/assets/github-compass-banner.png" alt="" />
+            <img id="logo" src="https://raw.githubusercontent.com/halcyon-vortex/master/master/assets/github-compass-banner.png" alt="" />
           </div>
           <Select
             value="month"
