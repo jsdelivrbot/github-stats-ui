@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, Link } from 'react-router';
-import {AppBar, IconButton, FlatButton, RaisedButton, Paper, Card, List} from 'material-ui';
+import {TextField} from 'material-ui';
 require('./main.scss');
 import ThemeManager from 'material-ui/lib/styles/theme-manager';
 import MyRawTheme from './css/materialThemeCustomizations';
@@ -108,6 +108,17 @@ export default class App extends React.Component {
             options={this.state.freshness}
             onChange={this.handleSelectFreshness.bind(this)}
           />
+        </div>
+        <div className="search-user">
+          <div
+            style={{
+            margin: "10",
+            fontSize: 18
+            }}
+          >
+             <TextField
+             floatingLabelText="Personalize:" />
+          </div>
         </div>
         <div className="flex-container">
           <TopChartList timeframe={this.state.selectedTimeframe} data={leaderboard} />
