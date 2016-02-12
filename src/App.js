@@ -28,13 +28,18 @@ export default class App extends React.Component {
       languages: [
         {value: "All", label: "All Languages"}
       ],
+      timeframe:  [
+        {value: "week", label: "weekly"},
+        {value: "month", label: "monthly"}
+      ],
       freshness: [
         {value: "med", label: "Balanced"},
         {value: "low", label: "More Established"},
         {value: "high", label: "Newer"}
       ],
       selectedLanguage: "",
-      selectedFreshness: "med"
+      selectedFreshness: "med",
+      selectedTimeframe: "month"
     }
   }
 
@@ -61,15 +66,22 @@ export default class App extends React.Component {
   handleSelectFreshness(selectedFreshness) {
     console.log("selected freshness");
     console.log(selectedFreshness);
-    let leaderboard = LEADERBOARD["week_" + selectedFreshness];
+    let leaderboard = LEADERBOARD[this.state.selectedTimeframe + "_" + selectedFreshness];
     this.setState({
       selectedFreshness,
       leaderboard
     })
   }
+  handleSelectTimeframe(selectedTimeframe) {
+    let leaderboard = LEADERBOARD[selectedTimeframe + "_" + this.state.selectedFreshness];
+    this.setState({
+      selectedTimeframe,
+      leaderboard
+    })
+  }
   //fetching data after mounting as necessary for ssr
   componentDidMount() {
-    let leaderboard = LEADERBOARD["week_" + this.state.selectedFreshness];
+    let leaderboard = LEADERBOARD["month_" + this.state.selectedFreshness];
     this.setState({
       leaderboard
     })
@@ -78,8 +90,6 @@ export default class App extends React.Component {
 
   render() {
     let {leaderboard, selectedLanguage} = this.state;
-    console.log('selected language value:')
-    console.log(typeof selectedLanguage);
     console.log(JSON.stringify(selectedLanguage));
     leaderboard = (selectedLanguage !== "All" && selectedLanguage !== "") ? _.filter(leaderboard, (l) => l.lang === selectedLanguage ) : leaderboard;
     return (
@@ -89,9 +99,9 @@ export default class App extends React.Component {
           margin: 5
         }}>
           <Select
-            value="All"
-            options={this.state.languages}
-            onChange={this.filterLanguage.bind(this)}
+            value="month"
+            options={this.state.timeframe}
+            onChange={this.handleSelectTimeframe.bind(this)}
           />
           <Select
             value="med"
@@ -100,7 +110,7 @@ export default class App extends React.Component {
           />
         </div>
         <div className="flex-container">
-          <TopChartList timeframe="Weekly" data={leaderboard} />
+          <TopChartList timeframe={this.state.selectedTimeframe} data={leaderboard} />
         </div>
 
 
