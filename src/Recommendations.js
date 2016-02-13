@@ -44,12 +44,14 @@ export default class Recommendations extends React.Component {
     console.log(USERDATA.most_similar)
     return (
       <div>
-        <div
-        style={{
-          margin: 5
+          <div
+            style={{
+          marginTop: 20
         }}>
-
-        </div>
+            <div className="banner">
+              <img id="logo" src="https://raw.githubusercontent.com/halcyon-vortex/master/master/assets/github-compass-banner.png" alt="" />
+            </div>
+          </div>
         <div className="flex-container">
           <TopRecommendationList recommendations={USERDATA.recommendations} />
           <TopUserList most_similar={USERDATA.most_similar} />
