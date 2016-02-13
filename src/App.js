@@ -103,16 +103,6 @@ export default class App extends React.Component {
             <img id="logo" src="https://raw.githubusercontent.com/halcyon-vortex/master/master/assets/github-compass-banner.png" alt="" />
           </div>
         </div>
-        {/** // <Select
-        //   value="month"
-        //   options={this.state.timeframe}
-        //   onChange={this.handleSelectTimeframe.bind(this)}
-        // />
-        // <Select
-        //   value="med"
-        //   options={this.state.freshness}
-        //   onChange={this.handleSelectFreshness.bind(this)}
-        // /> */}
         <div className="search-user">
              <TextField
              floatingLabelText="Personalize:"
