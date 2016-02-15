@@ -2,7 +2,7 @@ import React from 'react';
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
-export default class SelectFieldExampleSimple extends React.Component {
+export default class SelectFreshness extends React.Component {
 
   constructor(props) {
     super(props);
